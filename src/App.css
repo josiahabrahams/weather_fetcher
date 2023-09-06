@@ -1,0 +1,19 @@
+body{
+  margin:0;
+   text-align: center;
+
+}
+*{
+  box-sizing: border-box
+}
+header{
+  display:flex;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: aliceblue;
+}
+header>div{
+ margin-top: 1rem;
+}
+
+
