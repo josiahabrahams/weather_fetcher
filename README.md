@@ -1,8 +1,9 @@
-# React + Vite
+# Weather fetcher 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Is a app that that allows a user to search the  weather of a country or city
+and shows the the user the temprature (in celcius), the type of weather and country of a city or country.
 
-Currently, two official plugins are available:
+##feautures
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- uses react with vite  for dynamic javascript.
+- uses the MUI libary for neat and consistent UI.

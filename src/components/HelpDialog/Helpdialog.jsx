@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import {IconButton, Button} from '@mui/material'
-import {QuestionMark} from '@mui/icons-material'
+import { Button, Dialog} from '@mui/material'
+
 import './HelpDialog.css'
  /**
   * @callback EmpFn 
@@ -26,12 +26,12 @@ export const HelpDialog = (props) => {
    
   return (
     <>
-      <dialog className='overlay' open={props.isHelpClicked}>
+      <Dialog  open={props.isHelpClicked} >
     <div style={{fontSize:'1.5rem', paddingTop:"1rem"}}>
       click the search icon to search for the weather of a city or a country
     </div>
     <Button variant='outlined' onClick={props.closeHelpDialog}>close</Button>
-  </dialog>
+  </Dialog>
     </>
   )
 }
