@@ -19,7 +19,10 @@ export const App = () => {
     setIsSearchClicked(true)
     setIsHelpClicked(false)
   }
-  
+  /**
+   * function takes the data from the form then uses it to make a fetch request that if succesful
+   * and is non repeating will be added to the {@link searchedWeatherData}
+   */
   const handleSearchSubmit = async (event) => {
      event.preventDefault()
      const {target} = event
@@ -36,7 +39,11 @@ export const App = () => {
      try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=bc74db2ba01ded79e2d775881726ae77`)
      const responseData = await response.json()
-      if(searchedWeatherData.some(countryData=>countryData.id === responseData.id)){
+      if(!response.ok){ // checks if fetch request is sucessful
+        target.reset()
+        throw new Error('location doesn\'t exist')
+      }
+     if(searchedWeatherData.some(countryData=>countryData.id === responseData.id)){
         alert('country is already in the data system!')
         target.reset()
         return
@@ -44,7 +51,7 @@ export const App = () => {
      setSearchedWeatherData(oldArray => [...oldArray, responseData])
      target.reset()
      } catch (error) {
-      alert('country or city does not ')
+      alert(error)
      }
      
      
@@ -54,7 +61,7 @@ export const App = () => {
   }
   const countryWeatheList = searchedWeatherData.map((countryData,index) =>{
    return (
-    <CountryDiv key={countryData.id} 
+    <CountryDiv key={index} 
     name = {countryData.name} 
     temprature = {countryData.main.temp}
     description = {countryData.weather[0].description}
@@ -63,7 +70,7 @@ export const App = () => {
     
     )
   })
-  console.log(searchedWeatherData)
+  
   return (
     <>
     <CssBaseline />

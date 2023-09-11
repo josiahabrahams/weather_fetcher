@@ -1,9 +1,11 @@
 # Weather fetcher 
 
-Is a app that that allows a user to search the  weather of a country or city
-and shows the the user the temprature (in celcius), the type of weather and country of a city or country.
+Is a app that that allows a user to search the  weather for a location of their choice 
+and shows the the user the temprature (in celcius), the type of weather and country of the location.
 
-##feautures
+##Feautures
 
-- uses react with vite  for dynamic javascript.
-- uses the MUI libary for neat and consistent UI.
+- uses React with Vite  for dynamic JavaScript.
+- uses the MUI libary for  a neat and consistent UI.
+  ## Requires 
+  stable internet connection 
