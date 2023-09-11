@@ -16,19 +16,7 @@ header>div{
  margin-top: 1rem;
   
 }
-.country_holder{
-  background-color: aliceblue;
-  width: 60% ;
-  margin-left: 20% ;
-  margin-top: 2rem;
-  padding: 2rem;
-  border-radius: 0.5rem;
-}
-.detail_div{
- display: flex;
- justify-content: space-between;
-   
-}
+
 
 
 

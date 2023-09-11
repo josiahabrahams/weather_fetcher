@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {IconButton, Button, TextField, CssBaseline, Alert} from '@mui/material'
 import {QuestionMark, Search} from '@mui/icons-material'
 import {HelpDialog} from './components/HelpDialog/Helpdialog.jsx'
+import {CountryDiv} from './components/CountryDiv/CountryDiv.jsx'
 import './App.css'
 
 export const App = () => {
@@ -35,7 +36,11 @@ export const App = () => {
      try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=bc74db2ba01ded79e2d775881726ae77`)
      const responseData = await response.json()
-      
+      if(searchedWeatherData.some(countryData=>countryData.id === responseData.id)){
+        alert('country is already in the data system!')
+        target.reset()
+        return
+      }
      setSearchedWeatherData(oldArray => [...oldArray, responseData])
      target.reset()
      } catch (error) {
@@ -49,14 +54,13 @@ export const App = () => {
   }
   const countryWeatheList = searchedWeatherData.map((countryData,index) =>{
    return (
-     <div key={index} className='country_holder'>
-      <h2>{countryData.name}</h2>
-      <div className='detail_div'>
-        <p>Temprature: {Math.floor(countryData.main.temp - 273.15)}</p>
-        <p>Weather: {countryData.weather[0].description}</p>
-        <p>Country: {countryData.sys.country}</p>
-      </div>
-    </div>
+    <CountryDiv key={countryData.id} 
+    name = {countryData.name} 
+    temprature = {countryData.main.temp}
+    description = {countryData.weather[0].description}
+    country = {countryData.sys.country}
+    />
+    
     )
   })
   console.log(searchedWeatherData)
