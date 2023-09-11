@@ -10,11 +10,15 @@ header{
   display:flex;
   justify-content: space-between;
   padding: 1rem;
-  background-color: #7CB4B8;
+  background-color: rgb(255, 215, 0);
 }
 header>div{
  margin-top: 1rem;
   
+}
+header>h1{
+  color:white;
+  font-family:  'Times New Roman', Times, serif;
 }
 
 
