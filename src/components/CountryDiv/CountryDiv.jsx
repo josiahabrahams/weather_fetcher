@@ -3,9 +3,9 @@ import './CountryDiv.css'
 /**
   * @typedef {Object} Props - what the funtion uses to function
   * @prop {string} name - name of searched location
-  * @prop {string}  description - description of of locations weather
-  * @prop {string} country - locations country
-  * @prop {number} temprature -temprature of location
+  * @prop {string}  description - description of the location's weather
+  * @prop {string} country -  country the location belongs to
+  * @prop {number} temprature -temprature of location in kelvin 
   */
 /**
  * is a function that returns jsx that contains a dialoge that helps the user use the app
