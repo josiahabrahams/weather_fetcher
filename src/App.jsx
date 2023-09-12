@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import {IconButton, Button, TextField, CssBaseline, Alert} from '@mui/material'
+import {IconButton, TextField, CssBaseline, Alert} from '@mui/material'
 import {QuestionMark, Search} from '@mui/icons-material'
 import {HelpDialog} from './components/HelpDialog/Helpdialog.jsx'
 import {CountryDiv} from './components/CountryDiv/CountryDiv.jsx'
@@ -11,14 +11,22 @@ export const App = () => {
   const [showWarning, setShowWarning] = useState(false) // used to render alert 
   const [searchedWeatherData, setSearchedWeatherData] =  useState([]) // stores seached countries
    const closeHelpDialog = () => setIsHelpClicked(false)
+   
    const openHelpDialog = () => {
     setIsSearchClicked(false)
     setIsHelpClicked(true)
   }
+
    const openSearchInput = () => {
     setIsSearchClicked(true)
     setIsHelpClicked(false)
   }
+   /**
+    * this function removes data based on its relationship with the id using the filter()
+    * @param {number} id - is used to filter out anything that equals the id 
+    * @returns 
+    */
+  const deleteDiv = (id) => setSearchedWeatherData(oldArray=> oldArray.filter(countryData=> countryData.id !== id))
   /**
    * function takes the data from the form then uses it to make a fetch request that if succesful
    * and is non repeating will be added to the {@link searchedWeatherData}
@@ -31,14 +39,13 @@ export const App = () => {
      const {location} = data
      if (location.trim() === '') { // if statment will show alert and return nothing or else it will remove the alert
       setShowWarning(true)
-      
       return
      } else {
       setShowWarning(false)
      }
      try {
       const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=bc74db2ba01ded79e2d775881726ae77`)
-     const responseData = await response.json()
+      const responseData = await response.json()
       if(!response.ok){ // checks if fetch request is sucessful
         target.reset()
         throw new Error('location doesn\'t exist')
@@ -54,10 +61,6 @@ export const App = () => {
       alert(error)
      }
      
-     
-     
-     
-
   }
   const countryWeatheList = searchedWeatherData.map((countryData,index) =>{
    return (
@@ -66,6 +69,8 @@ export const App = () => {
     temprature = {countryData.main.temp}
     description = {countryData.weather[0].description}
     country = {countryData.sys.country}
+    deleteDiv={deleteDiv}
+    id={countryData.id}
     />
     
     )

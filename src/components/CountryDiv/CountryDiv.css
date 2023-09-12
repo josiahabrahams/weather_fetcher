@@ -13,3 +13,7 @@
    justify-content: space-between;
      
   }
+  .header_holder{
+    display: flex;
+   justify-content: space-between;
+  }
